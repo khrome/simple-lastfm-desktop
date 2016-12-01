@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script>
+            //try a few things that won't work
+            setTimeout(function(){
+                var event = new MouseEvent('click', {
+                    'view': window,
+                    'bubbles': true,
+                    'cancelable': true
+                });
+                document.getElementById('close').dispatchEvent(event);
+                window.close();
+                //open('about:blank', '_self').close();
+            }, 3000);
+        </script>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <h1>Last.fm account linked!</h1>
+        <a id="close" href="javascript:window.close()">CLOSE</a>
+    </body>
+</html>

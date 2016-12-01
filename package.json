@@ -1,0 +1,29 @@
+{
+  "name": "simple-lastfm-desktop",
+  "version": "1.0.0",
+  "description": "A simple-lastfm extension for the destop authentication process",
+  "main": "lastfm.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "lastfm",
+    "desktop",
+    "api"
+  ],
+  "author": "Abbey Hawk Sparrow <@khrome> (http://patternweaver.com)",
+  "bugs": {
+        "url": "https://github.com/khrome/simple-lastfm-desktop/issues"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/khrome/simple-lastfm-desktop.git"
+    },
+  "dependencies": {
+    "simple-lastfm": "*",
+    "whammo": "*",
+    "director": "*",
+    "xml2js": "*"
+  }
+}
