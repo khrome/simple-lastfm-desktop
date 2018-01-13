@@ -5,9 +5,7 @@ var http = require('http');
 var xml2js = require('xml2js');
 var fs = require('fs');
 
-var Server = require('whammo');
-var directorAdapter = require('whammo/routers/director');
-var director = require('director');
+var Server = require('micro-serve');
 
 
 function openAuthorization(ob, cb){
@@ -43,23 +41,24 @@ Lastfm.prototype.ready = function(db, cb, focus){
                         console.log("Error: " + result.error);
                     }
                 }, function(done){
-                    application = new Server();
-                    directorAdapter.routeHTTP(application, new director.http.Router({
-                        '/lastfm_return' : {
-                            get:function(){
-                                var uri = require('url').parse(this.req.url, true);
-                                if(uri.query.token){
-                                    ob.token = uri.query.token;
+                    application = new Server({
+                        director : {
+                            '/lastfm_return' : {
+                                get:function(){
+                                    var uri = require('url').parse(this.req.url, true);
+                                    if(uri.query.token){
+                                        ob.token = uri.query.token;
+                                    }
+                                    this.res.end(fs.readFileSync('lastfm.html'));
+                                    if(focus) focus();
+                                    application.stop();
+                                    done();
                                 }
-                                this.res.end(fs.readFileSync('lastfm.html'));
-                                if(focus) focus();
-                                application.stop();
-                                done();
                             }
                         }
-                    }));
+                    });
                     application.listen(8082);
-                    
+
                     openAuthorization(ob);
                 });
             }else{

@@ -1,6 +1,6 @@
 {
   "name": "simple-lastfm-desktop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple-lastfm extension for the destop authentication process",
   "main": "lastfm.js",
   "scripts": {
@@ -22,7 +22,7 @@
     },
   "dependencies": {
     "simple-lastfm": "*",
-    "whammo": "*",
+    "micro-serve": "*",
     "director": "*",
     "xml2js": "*"
   }
